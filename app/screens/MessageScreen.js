@@ -5,6 +5,7 @@ import ListItem from "../components/ListItem";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import ListItemSeparator from "../components/ListItemSeparator";
+import ListItemDeleteAction from "../components/ListItemDeleteAction";
 
 
 
@@ -35,7 +36,7 @@ const MessageScreen = () => {
                         subTitle={item.description}
                         image={item.image}
                         onPress={() => alert('message selected', item) }
-                        renderRightActions={() => <View style={{backgroundColor: "red", width: 70}}></View>}
+                        renderRightActions={() => <ListItemDeleteAction/>}
                     />
                  )}
                 ItemSeparatorComponent={() => <ListItemSeparator/>}
