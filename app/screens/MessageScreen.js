@@ -34,6 +34,7 @@ const MessageScreen = () => {
                         title={item.title}
                         subTitle={item.description}
                         image={item.image}
+                        onPress={() => alert('message selected', item) }
                     />
                  )}
                 ItemSeparatorComponent={() => <ListItemSeparator/>}
