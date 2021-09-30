@@ -9,7 +9,7 @@ import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
 export default function App() {
   return (
      // <WelcomeScreen/>
-    //   <ViewImageScreen/>
+      <ViewImageScreen/>
     //   <View style={{
     //     backgroundColor: '#f8f4f4',
     //     padding: 20,
@@ -21,6 +21,6 @@ export default function App() {
     //       image={require("./app/assets/jacket.jpg")}
     //     />
     //   </View>
-      <ListingDetailsScreen />
+    //   <ListingDetailsScreen />
   );
 }
