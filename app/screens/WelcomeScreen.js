@@ -2,6 +2,7 @@ import React from 'react';
 import {ImageBackground, StyleSheet, View, Image, Text} from "react-native";
 
 import colors from "../config/colors";
+import AppButton from "../components/AppButton";
 
 const WelcomeScreen = () => {
     return (
@@ -13,7 +14,7 @@ const WelcomeScreen = () => {
                 <Image style={styles.logo} source={require('../assets/logo-red.png')} />
                 <Text>Sell What You Don't Need</Text>
             </View>
-            <View style={styles.loginButton}/>
+            <AppButton title="Login" onPress={() => alert('hi')} />
             <View style={styles.registerButton}/>
         </ImageBackground>
 
