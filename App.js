@@ -5,6 +5,7 @@ import ViewImageScreen from "./app/screens/ViewImageScreen";
 import Card from "./app/components/Card";
 import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
 import MessageScreen from "./app/screens/MessageScreen";
+import AccountScreen from "./app/screens/AccountScreen";
 
 
 export default function App() {
@@ -24,5 +25,6 @@ export default function App() {
     //   </View>
     //   <ListingDetailsScreen />
       <MessageScreen/>
+    //   <AccountScreen/>
   );
 }
