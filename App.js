@@ -10,7 +10,7 @@ import AccountScreen from "./app/screens/AccountScreen";
 
 export default function App() {
   return (
-     // <WelcomeScreen/>
+    // <WelcomeScreen/>
      //  <ViewImageScreen/>
     //   <View style={{
     //     backgroundColor: '#f8f4f4',
@@ -24,7 +24,6 @@ export default function App() {
     //     />
     //   </View>
     //   <ListingDetailsScreen />
-      <MessageScreen/>
-    //   <AccountScreen/>
+       <MessageScreen/>
   );
 }
