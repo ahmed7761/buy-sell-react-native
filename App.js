@@ -9,6 +9,7 @@ import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
 import MessageScreen from "./app/screens/MessageScreen";
 import AccountScreen from "./app/screens/AccountScreen";
 import ListItem from "./app/components/ListItem";
+import ListingsScreen from "./app/screens/ListingsScreen";
 
 
 export default function App() {
@@ -39,6 +40,7 @@ export default function App() {
     //         }
     //     />
     //   </Screen>
-      <AccountScreen/>
+    //   <AccountScreen/>
+      <ListingsScreen/>
   );
 }
