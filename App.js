@@ -8,6 +8,7 @@ import Icon from "./app/components/Icon";
 import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
 import MessageScreen from "./app/screens/MessageScreen";
 import AccountScreen from "./app/screens/AccountScreen";
+import ListItem from "./app/components/ListItem";
 
 
 export default function App() {
@@ -28,11 +29,20 @@ export default function App() {
     //   <ListingDetailsScreen />
     //    <MessageScreen/>
       <Screen>
-        <Icon
-          name="email"
-          size={50}
-          backgroundColor='red'
-          iconColor='white'
+        {/*<Icon*/}
+        {/*  name="email"*/}
+        {/*  size={50}*/}
+        {/*  backgroundColor='red'*/}
+        {/*  iconColor='white'*/}
+        {/*/>*/}
+        <ListItem
+            title="Title"
+            ImageComponent={<Icon
+                            name="email"
+                            size={50}
+                            backgroundColor='red'
+                            iconColor='white' />
+            }
         />
       </Screen>
   );
