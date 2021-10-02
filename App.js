@@ -28,22 +28,17 @@ export default function App() {
     //   </View>
     //   <ListingDetailsScreen />
     //    <MessageScreen/>
-      <Screen>
-        {/*<Icon*/}
-        {/*  name="email"*/}
-        {/*  size={50}*/}
-        {/*  backgroundColor='red'*/}
-        {/*  iconColor='white'*/}
-        {/*/>*/}
-        <ListItem
-            title="Title"
-            ImageComponent={<Icon
-                            name="email"
-                            size={50}
-                            backgroundColor='red'
-                            iconColor='white' />
-            }
-        />
-      </Screen>
+    //   <Screen>
+    //     <ListItem
+    //         title="Title"
+    //         ImageComponent={<Icon
+    //                         name="email"
+    //                         size={50}
+    //                         backgroundColor='red'
+    //                         iconColor='white' />
+    //         }
+    //     />
+    //   </Screen>
+      <AccountScreen/>
   );
 }

@@ -2,9 +2,9 @@ import React from 'react';
 import Constants from "expo-constants";
 import {FlatList, SafeAreaView, StyleSheet, StatusBar, Platform} from "react-native";
 
-const Screen = ({children}) => {
+const Screen = ({children, style}) => {
     return (
-        <SafeAreaView style={styles.screen}>
+        <SafeAreaView style={[styles.screen, style]}>
             {children}
         </SafeAreaView>
     );
