@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, TextInput, View, Image, Platform, StatusBar, TouchableOpacity, Alert, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, Switch, Text, TextInput, View, Image, Platform, StatusBar, TouchableOpacity, Alert, TouchableWithoutFeedback } from 'react-native';
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
 import Card from "./app/components/Card";
@@ -11,12 +11,14 @@ import AccountScreen from "./app/screens/AccountScreen";
 import ListItem from "./app/components/ListItem";
 import ListingsScreen from "./app/screens/ListingsScreen";
 import AppTextInput from "./app/components/AppTextInput";
+import AppPicker from "./app/components/AppPicker";
+
 
 
 
 export default function App() {
 
-  const [firstName, setFirstName] = useState('');
+  const [isNew, setIsNew] = useState(false);
 
   return (
     // <WelcomeScreen/>
@@ -61,6 +63,11 @@ export default function App() {
         {/*/>*/}
 
         <AppTextInput placeholder="Username" icon='email' />
+        <Switch
+            value={isNew}
+            onValueChange={(newValue) => setIsNew(newValue)}
+        />
+        <AppPicker icon='apps' placeholder='Category' />
       </Screen>
   );
 }
