@@ -4,8 +4,8 @@ import AppText from "./AppText";
 import colors from "../config/colors";
 
 
-const ErrorMessage = ({ children, error }) => {
-    if(!error) return null;
+const ErrorMessage = ({ children, error, visible }) => {
+    if(!visible || !error) return null;
 
     return (
         <AppText style={styles.error} >
