@@ -9,7 +9,7 @@ import PickerItem from "./PickerItem";
 
 
 
-const AppPicker = ({ icon, items, placeholder }) => {
+const AppPicker = ({ icon, items, placeholder, onSelectItem, selectedItem }) => {
 
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -18,7 +18,7 @@ const AppPicker = ({ icon, items, placeholder }) => {
             <TouchableWithoutFeedback onPress={()=> setModalVisible(true)}>
                 <View style={styles.container}>
                     {icon && <MaterialCommunityIcons name={icon} size={20} color={defaultStyles.colors.medium} style={styles.icon} />}
-                    <AppText style={styles.text}>{placeholder}</AppText>
+                    <AppText style={styles.text}>{selectedItem ? selectedItem.label : placeholder}</AppText>
                     <MaterialCommunityIcons name='chevron-down' size={20} color={defaultStyles.colors.medium} />
                 </View>
             </TouchableWithoutFeedback>
@@ -28,7 +28,13 @@ const AppPicker = ({ icon, items, placeholder }) => {
                     <FlatList
                         data={items}
                         keyExtractor={item => item.value.toString()}
-                        renderItem={({item}) => <PickerItem label={item.label} onPress={() => alert('item pressed')} />}
+                        renderItem={({item}) => <PickerItem
+                                                    label={item.label}
+                                                    onPress={() => {
+                                                        setModalVisible(false);
+                                                        onSelectItem(item);
+                                                    }}
+                                                /> }
                     />
                 </Screen>
             </Modal>

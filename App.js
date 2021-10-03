@@ -34,6 +34,7 @@ export default function App() {
   ];
 
   const [isNew, setIsNew] = useState(false);
+  const [category, setCategory] = useState(categories[0]);
 
   return (
     // <WelcomeScreen/>
@@ -82,7 +83,12 @@ export default function App() {
             value={isNew}
             onValueChange={(newValue) => setIsNew(newValue)}
         />
-        <AppPicker items={categories} icon='apps' placeholder='Category' />
+        <AppPicker
+            selectedItem={category}
+            onSelectItem={item => setCategory(item)}
+            items={categories}
+            icon='apps'
+            placeholder='Category' />
       </Screen>
   );
 }
