@@ -53,7 +53,7 @@ export default function App() {
     //     />
     //   </View>
     //   <ListingDetailsScreen />
-        <MessageScreen/>
+        //<MessageScreen/>
     //   <Screen>
     //     <ListItem
     //         title="Title"
@@ -94,6 +94,6 @@ export default function App() {
     //   </Screen>
 
       // <LoginScreen />
-      //<ListingEditScreen/>
+      <ListingEditScreen/>
   );
 }
