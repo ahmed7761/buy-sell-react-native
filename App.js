@@ -18,6 +18,21 @@ import AppPicker from "./app/components/AppPicker";
 
 export default function App() {
 
+  const categories = [
+      {
+          label: "Furniture",
+          value: 1
+      },
+      {
+          label: "Clothing",
+          value: 2
+      },
+      {
+          label: "Camera",
+          value: 3
+      },
+  ];
+
   const [isNew, setIsNew] = useState(false);
 
   return (
@@ -67,7 +82,7 @@ export default function App() {
             value={isNew}
             onValueChange={(newValue) => setIsNew(newValue)}
         />
-        <AppPicker icon='apps' placeholder='Category' />
+        <AppPicker items={categories} icon='apps' placeholder='Category' />
       </Screen>
   );
 }
