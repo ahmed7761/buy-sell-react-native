@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { StyleSheet, Switch, Text, TextInput, View, Image, Platform, StatusBar, TouchableOpacity, Alert, TouchableWithoutFeedback } from 'react-native';
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
@@ -14,8 +14,7 @@ import AppTextInput from "./app/components/AppTextInput";
 import AppPicker from "./app/components/AppPicker";
 import LoginScreen from "./app/screens/LoginScreen";
 import ListingEditScreen from "./app/screens/ListingEditScreen";
-
-
+import * as ImagePicker from 'expo-image-picker';
 
 
 export default function App() {
@@ -37,9 +36,19 @@ export default function App() {
 
   const [isNew, setIsNew] = useState(false);
   const [category, setCategory] = useState(categories[0]);
+  const requestPermission = async () => {
+      const result = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if(!result.granted)
+          alert('You need to enable permission to access the library')
+  };
+
+
+  useEffect(() => {
+      requestPermission();
+  }, []);
 
   return (
-    // <WelcomeScreen/>
+     <WelcomeScreen/>
      //  <ViewImageScreen/>
     //   <View style={{
     //     backgroundColor: '#f8f4f4',
@@ -94,6 +103,6 @@ export default function App() {
     //   </Screen>
 
       // <LoginScreen />
-      <ListingEditScreen/>
+     // <ListingEditScreen/>
   );
 }
