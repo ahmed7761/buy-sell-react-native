@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, Switch, Text, TextInput, View, Image, Platform, StatusBar, TouchableOpacity, Alert, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, Button, Switch, Text, TextInput, View, Image, Platform, StatusBar, TouchableOpacity, Alert, TouchableWithoutFeedback } from 'react-native';
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
 import Card from "./app/components/Card";
@@ -15,6 +15,8 @@ import AppPicker from "./app/components/AppPicker";
 import LoginScreen from "./app/screens/LoginScreen";
 import ListingEditScreen from "./app/screens/ListingEditScreen";
 import * as ImagePicker from 'expo-image-picker';
+import * as Permissions from 'expo-permissions';
+
 
 
 export default function App() {
@@ -36,6 +38,7 @@ export default function App() {
 
   const [isNew, setIsNew] = useState(false);
   const [category, setCategory] = useState(categories[0]);
+  const [imageUri, setImageUri] = useState();
   const requestPermission = async () => {
       const result = await ImagePicker.requestMediaLibraryPermissionsAsync();
       if(!result.granted)
@@ -47,8 +50,24 @@ export default function App() {
       requestPermission();
   }, []);
 
+  const selectImage = async () => {
+      try {
+          const result = await ImagePicker.launchImageLibraryAsync();
+          if(!result.cancelled){
+              setImageUri(result.uri)
+          }
+      } catch (e) {
+          console.log(e);
+      }
+
+  };
+
   return (
-     <WelcomeScreen/>
+      <Screen>
+          <Button title="Select Image" onPress={selectImage} />
+          <Image source={{ uri: imageUri}} style={{width: 200, height: 200}} />
+      </Screen>
+     //<WelcomeScreen/>
      //  <ViewImageScreen/>
     //   <View style={{
     //     backgroundColor: '#f8f4f4',
