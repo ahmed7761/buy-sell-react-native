@@ -17,6 +17,7 @@ import ListingEditScreen from "./app/screens/ListingEditScreen";
 import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
 import ImageInput from "./app/components/ImageInput";
+import ImageInputList from "./app/components/ImageInputList";
 
 
 
@@ -39,38 +40,24 @@ export default function App() {
 
   const [isNew, setIsNew] = useState(false);
   const [category, setCategory] = useState(categories[0]);
-  const [imageUri, setImageUri] = useState();
-  const requestPermission = async () => {
-      const result = await ImagePicker.requestMediaLibraryPermissionsAsync();
-      if(!result.granted)
-          alert('You need to enable permission to access the library')
-  };
+  const [imageUris, setImageUris] = useState([]);
 
+  const handleAdd = uri => {
+        setImageUris([...imageUris, uri])
+    };
 
-  useEffect(() => {
-      requestPermission();
-  }, []);
-
-  const selectImage = async () => {
-      try {
-          const result = await ImagePicker.launchImageLibraryAsync();
-          if(!result.cancelled){
-              setImageUri(result.uri)
-          }
-      } catch (e) {
-          console.log(e);
-      }
-
+  const handleRemove = uri => {
+       setImageUris(imageUris.filter((imageUri) => imageUri !== uri ))
   };
 
   return (
 
       <Screen>
-          <ImageInput
-              imageUri={imageUri}
-              onChangeImage={(uri) => setImageUri(uri)}
+          <ImageInputList
+              imageUris={imageUris}
+              onAddImage={uri => handleAdd(uri)}
+              onRemoveImage={uri => handleRemove(uri)}
           />
-          <Button title="Select Image" onPress={selectImage} />
       </Screen>
      //<WelcomeScreen/>
      //  <ViewImageScreen/>
