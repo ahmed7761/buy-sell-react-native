@@ -52,13 +52,13 @@ export default function App() {
 
   return (
 
-      <Screen>
-          <ImageInputList
-              imageUris={imageUris}
-              onAddImage={uri => handleAdd(uri)}
-              onRemoveImage={uri => handleRemove(uri)}
-          />
-      </Screen>
+      // <Screen>
+      //     <ImageInputList
+      //         imageUris={imageUris}
+      //         onAddImage={uri => handleAdd(uri)}
+      //         onRemoveImage={uri => handleRemove(uri)}
+      //     />
+      // </Screen>
      //<WelcomeScreen/>
      //  <ViewImageScreen/>
     //   <View style={{
@@ -114,6 +114,6 @@ export default function App() {
     //   </Screen>
 
       // <LoginScreen />
-     // <ListingEditScreen/>
+      <ListingEditScreen/>
   );
 }

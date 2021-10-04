@@ -1,5 +1,4 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
 import ImageInputList from "../ImageInputList";
 import ErrorMessage from "./ErrorMessage";
 import {useFormikContext} from "formik";
@@ -26,9 +25,5 @@ const FormImagePicker = ({ name }) => {
   </>
  );
 };
-
-const styles = StyleSheet.create({
-    container:{},
-});
 
 export default FormImagePicker;
