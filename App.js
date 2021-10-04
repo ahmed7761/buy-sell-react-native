@@ -66,7 +66,10 @@ export default function App() {
   return (
 
       <Screen>
-          <ImageInput imageUri={imageUri}/>
+          <ImageInput
+              imageUri={imageUri}
+              onChangeImage={(uri) => setImageUri(uri)}
+          />
           <Button title="Select Image" onPress={selectImage} />
       </Screen>
      //<WelcomeScreen/>
