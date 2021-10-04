@@ -18,40 +18,51 @@ import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
 import ImageInput from "./app/components/ImageInput";
 import ImageInputList from "./app/components/ImageInputList";
-
-
+import AppText from "./app/components/AppText";
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 
 export default function App() {
 
-  const categories = [
-      {
-          label: "Furniture",
-          value: 1
-      },
-      {
-          label: "Clothing",
-          value: 2
-      },
-      {
-          label: "Camera",
-          value: 3
-      },
-  ];
+    const Link = () => {
+        const navigation = useNavigation();
 
-  const [isNew, setIsNew] = useState(false);
-  const [category, setCategory] = useState(categories[0]);
-  const [imageUris, setImageUris] = useState([]);
+        return(
+        <Button
+            title="View Tweet"
+            onPress={() => navigation.navigate("TweetDetails")}
+        />
+    )};
 
-  const handleAdd = uri => {
-        setImageUris([...imageUris, uri])
-    };
+    const Tweets = ({ navigation }) => (
+        <Screen>
+            <AppText>Tweets</AppText>
+            {/*<Button*/}
+            {/*    title="View Tweet"*/}
+            {/*    onPress={() => navigation.navigate("TweetDetails")}*/}
+            {/*/>*/}
+            <Link />
+        </Screen>
+    );
 
-  const handleRemove = uri => {
-       setImageUris(imageUris.filter((imageUri) => imageUri !== uri ))
-  };
+    const TweetDetails = () => (
+        <Screen>
+            <AppText>Tweet Details</AppText>
+        </Screen>
+    );
+
+    const Stack = createStackNavigator();
+    const StackNavigator = () => (
+        <Stack.Navigator>
+            <Stack.Screen name="Tweets" component={Tweets} />
+            <Stack.Screen name="TweetDetails" component={TweetDetails} />
+        </Stack.Navigator>
+    );
 
   return (
-
+        <NavigationContainer>
+            <StackNavigator />
+        </NavigationContainer>
       // <Screen>
       //     <ImageInputList
       //         imageUris={imageUris}
@@ -114,6 +125,6 @@ export default function App() {
     //   </Screen>
 
       // <LoginScreen />
-      <ListingEditScreen/>
+     // <ListingEditScreen/>
   );
 }
