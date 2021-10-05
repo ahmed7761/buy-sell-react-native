@@ -53,8 +53,18 @@ export default function App() {
 
     const Stack = createStackNavigator();
     const StackNavigator = () => (
-        <Stack.Navigator>
-            <Stack.Screen name="Tweets" component={Tweets} />
+        <Stack.Navigator
+            screenOptions={{
+                headerStyle: { backgroundColor: 'blue' },
+            }}
+        >
+            <Stack.Screen
+                name="Tweets"
+                component={Tweets}
+                options={{
+                    headerStyle: { backgroundColor: 'tomato' },
+                }}
+            />
             <Stack.Screen
                 name="TweetDetails"
                 component={TweetDetails}
