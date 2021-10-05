@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import ListingsScreen from "../screens/ListingsScreen";
 import ListingDetailsScreen from "../screens/ListingDetailsScreen";
+import routes from "./routes";
 
 const Stack = createStackNavigator();
 const FeedNavigator = () => (
@@ -11,7 +12,7 @@ const FeedNavigator = () => (
         screenOptions={{ headerShown: false }}
     >
         <Stack.Screen
-            name="Listings"
+            name={routes.LISTINGS}
             component={ListingsScreen}
         />
         <Stack.Screen
