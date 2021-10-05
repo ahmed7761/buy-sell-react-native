@@ -7,7 +7,9 @@ import ListingDetailsScreen from "../screens/ListingDetailsScreen";
 const Stack = createStackNavigator();
 const FeedNavigator = () => (
     <Stack.Navigator
-        mode="modal">
+        mode="modal"
+        screenOptions={{ headerShown: false }}
+    >
         <Stack.Screen
             name="Listings"
             component={ListingsScreen}
