@@ -23,6 +23,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import AuthNavigator from "./app/navigation/AuthNavigator";
 
 export default function App() {
 
@@ -104,7 +105,7 @@ export default function App() {
 
   return (
         <NavigationContainer>
-            <TabNavigator />
+            <AuthNavigator />
         </NavigationContainer>
       // <Screen>
       //     <ImageInputList
