@@ -25,6 +25,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AuthNavigator from "./app/navigation/AuthNavigator";
 import navigationTheme from "./app/navigation/navigationTheme";
+import AppNavigator from "./app/navigation/AppNavigator";
 
 export default function App() {
 
@@ -100,13 +101,12 @@ export default function App() {
                     tabBarIcon: ({ size, color }) => <MaterialCommunityIcons name='home' size={size} color={color} />
                 }}
             />
-            <Tab.Screen name="Account" component={Account} />
         </Tab.Navigator>
     );
 
   return (
         <NavigationContainer theme={navigationTheme} >
-            <AuthNavigator />
+            <AppNavigator />
         </NavigationContainer>
       // <Screen>
       //     <ImageInputList
