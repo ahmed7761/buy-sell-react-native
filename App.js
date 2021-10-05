@@ -30,7 +30,7 @@ export default function App() {
         return(
         <Button
             title="View Tweet"
-            onPress={() => navigation.navigate("TweetDetails")}
+            onPress={() => navigation.navigate("TweetDetails", { id: 1 })}
         />
     )};
 
@@ -45,9 +45,9 @@ export default function App() {
         </Screen>
     );
 
-    const TweetDetails = () => (
+    const TweetDetails = ({ route }) => (
         <Screen>
-            <AppText>Tweet Details</AppText>
+            <AppText>Tweet Details {route.params.id} </AppText>
         </Screen>
     );
 
@@ -70,7 +70,7 @@ export default function App() {
       //         onRemoveImage={uri => handleRemove(uri)}
       //     />
       // </Screen>
-     //<WelcomeScreen/>
+    // <WelcomeScreen/>
      //  <ViewImageScreen/>
     //   <View style={{
     //     backgroundColor: '#f8f4f4',
