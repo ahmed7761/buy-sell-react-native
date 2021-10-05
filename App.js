@@ -21,6 +21,7 @@ import ImageInputList from "./app/components/ImageInputList";
 import AppText from "./app/components/AppText";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 export default function App() {
 
@@ -51,6 +52,12 @@ export default function App() {
         </Screen>
     );
 
+    const Account = () => (
+        <Screen>
+            <AppText>Account </AppText>
+        </Screen>
+    );
+
     const Stack = createStackNavigator();
     const StackNavigator = () => (
         <Stack.Navigator
@@ -73,9 +80,17 @@ export default function App() {
         </Stack.Navigator>
     );
 
+    const Tab = createBottomTabNavigator();
+    const TabNavigator = () => (
+        <Tab.Navigator>
+            <Tab.Screen name="Feed" component={Tweets} />
+            <Tab.Screen name="Account" component={Account} />
+        </Tab.Navigator>
+    );
+
   return (
         <NavigationContainer>
-            <StackNavigator />
+            <TabNavigator />
         </NavigationContainer>
       // <Screen>
       //     <ImageInputList
