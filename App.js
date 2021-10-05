@@ -22,6 +22,7 @@ import AppText from "./app/components/AppText";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default function App() {
 
@@ -82,8 +83,21 @@ export default function App() {
 
     const Tab = createBottomTabNavigator();
     const TabNavigator = () => (
-        <Tab.Navigator>
-            <Tab.Screen name="Feed" component={Tweets} />
+        <Tab.Navigator
+            tabBarOptions={{
+                activeBackgroundColor: "tomato",
+                inctiveBackgroundColor: "#eee",
+                activeTintColor: "white",
+                inctiveTintColor: "black",
+            }}
+        >
+            <Tab.Screen
+                name="Feed"
+                component={Tweets}
+                options={{
+                    tabBarIcon: ({ size, color }) => <MaterialCommunityIcons name='home' size={size} color={color} />
+                }}
+            />
             <Tab.Screen name="Account" component={Account} />
         </Tab.Navigator>
     );
