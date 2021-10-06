@@ -7,6 +7,7 @@ import listingApi from '../api/listings';
 import AppText from "../components/AppText";
 import AppButton from "../components/AppButton";
 import AppActivityIndicator from "../components/AppActivityIndicator";
+import useApi from "../hooks/useApi";
 
 
 const ListingsScreen = ({ navigation }) => {
@@ -15,9 +16,6 @@ const ListingsScreen = ({ navigation }) => {
     useEffect(() => {
         loadListings();
     },[]);
-
-
-
 
     return (
         <Screen style={styles.screen}>
