@@ -6,22 +6,28 @@ import colors from "../config/colors";
 import listingApi from '../api/listings';
 import AppText from "../components/AppText";
 import AppButton from "../components/AppButton";
+import AppActivityIndicator from "../components/AppActivityIndicator";
 
 
 const ListingsScreen = ({ navigation }) => {
     const [listings, setListings] = useState([]);
     const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         loadListings();
     },[]);
 
     const loadListings = async () => {
+      setLoading(true);
       const response = await listingApi.getListings();
+      setLoading(false);
+
       if(!response.ok){
           return setError(true);
       }
-        setError(false);
+
+      setError(false);
       setListings(response.data);
     };
 
@@ -33,6 +39,7 @@ const ListingsScreen = ({ navigation }) => {
                 <AppButton title="Retry" onPress={loadListings} />
             </>
             }
+            <AppActivityIndicator visible={loading} />
             <FlatList
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
