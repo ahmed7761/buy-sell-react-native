@@ -3,39 +3,39 @@ import Screen from "../components/Screen";
 import {FlatList, StyleSheet} from "react-native";
 import Card from "../components/Card";
 import colors from "../config/colors";
-import routes from "../navigation/routes";
 import listingApi from '../api/listings';
+import AppText from "../components/AppText";
+import AppButton from "../components/AppButton";
 
-const listings = [
-    {
-        id: 1,
-        title: 'Red jacket for sale',
-        price: 100,
-        image: require('../assets/jacket.jpg')
-    },
-    {
-        id: 2,
-        title: 'Couch in great condition',
-        price: 200,
-        image: require('../assets/couch.jpg')
-    },
-]
 
 const ListingsScreen = ({ navigation }) => {
     const [listings, setListings] = useState([]);
+    const [error, setError] = useState(false);
+
     useEffect(() => {
         loadListings();
     },[]);
 
     const loadListings = async () => {
       const response = await listingApi.getListings();
+      if(!response.ok){
+          return setError(true);
+      }
+        setError(false);
       setListings(response.data);
     };
 
 
     return (
         <Screen style={styles.screen}>
+            {error && <>
+                <AppText>Couldn't retieve the listings</AppText>
+                <AppButton title="Retry" onPress={loadListings} />
+            </>
+            }
             <FlatList
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
                 data={listings}
                 keyExtractor={listing => listing.id.toString()}
                 renderItem={({item}) =>
