@@ -10,26 +10,13 @@ import AppActivityIndicator from "../components/AppActivityIndicator";
 
 
 const ListingsScreen = ({ navigation }) => {
-    const [listings, setListings] = useState([]);
-    const [error, setError] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const {data: listings, error, loading, request: loadListings} = useApi(listingApi.getListings);
 
     useEffect(() => {
         loadListings();
     },[]);
 
-    const loadListings = async () => {
-      setLoading(true);
-      const response = await listingApi.getListings();
-      setLoading(false);
 
-      if(!response.ok){
-          return setError(true);
-      }
-
-      setError(false);
-      setListings(response.data);
-    };
 
 
     return (
