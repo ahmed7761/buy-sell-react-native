@@ -18,29 +18,31 @@ const ListingsScreen = ({ navigation }) => {
     },[]);
 
     return (
-        <Screen style={styles.screen}>
-            {error && <>
-                <AppText>Couldn't retieve the listings</AppText>
-                <AppButton title="Retry" onPress={loadListings} />
-            </>
-            }
+        <>
             <AppActivityIndicator visible={loading} />
-            <FlatList
-                showsVerticalScrollIndicator={false}
-                showsHorizontalScrollIndicator={false}
-                data={listings}
-                keyExtractor={listing => listing.id.toString()}
-                renderItem={({item}) =>
-                    <Card
-                        title={item.title}
-                        subTitle={"$" + item.price}
-                        imageUrl={item.images[0].url}
-                        onPress={() => navigation.navigate("ListingDetails", item)}
-                        thumbnailUrl={item.images[0].thumbnailUrl}
-                    />
+            <Screen style={styles.screen}>
+                {error && <>
+                    <AppText>Couldn't retieve the listings</AppText>
+                    <AppButton title="Retry" onPress={loadListings} />
+                </>
                 }
-            />
-        </Screen>
+                <FlatList
+                    showsVerticalScrollIndicator={false}
+                    showsHorizontalScrollIndicator={false}
+                    data={listings}
+                    keyExtractor={listing => listing.id.toString()}
+                    renderItem={({item}) =>
+                        <Card
+                            title={item.title}
+                            subTitle={"$" + item.price}
+                            imageUrl={item.images[0].url}
+                            onPress={() => navigation.navigate("ListingDetails", item)}
+                            thumbnailUrl={item.images[0].thumbnailUrl}
+                        />
+                    }
+                />
+            </Screen>
+       </>
     );
 };
 
