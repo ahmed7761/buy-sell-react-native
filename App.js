@@ -28,85 +28,20 @@ import navigationTheme from "./app/navigation/navigationTheme";
 import AppNavigator from "./app/navigation/AppNavigator";
 import OfflineNotice from "./app/components/OfflineNotice";
 import AuthContext from "./app/auth/context";
+import authStorage from "./app/auth/storage";
+import jwtDecode from "jwt-decode";
 
 export default function App() {
-
-    const Link = () => {
-        const navigation = useNavigation();
-
-        return(
-        <Button
-            title="View Tweet"
-            onPress={() => navigation.navigate("TweetDetails", { id: 1 })}
-        />
-    )};
-
-    const Tweets = ({ navigation }) => (
-        <Screen>
-            <AppText>Tweets</AppText>
-            {/*<Button*/}
-            {/*    title="View Tweet"*/}
-            {/*    onPress={() => navigation.navigate("TweetDetails")}*/}
-            {/*/>*/}
-            <Link />
-        </Screen>
-    );
-
-    const TweetDetails = ({ route }) => (
-        <Screen>
-            <AppText>Tweet Details {route.params.id} </AppText>
-        </Screen>
-    );
-
-    const Account = () => (
-        <Screen>
-            <AppText>Account </AppText>
-        </Screen>
-    );
-
-    const Stack = createStackNavigator();
-    const StackNavigator = () => (
-        <Stack.Navigator
-            screenOptions={{
-                headerStyle: { backgroundColor: 'blue' },
-            }}
-        >
-            <Stack.Screen
-                name="Tweets"
-                component={Tweets}
-                options={{
-                    headerStyle: { backgroundColor: 'tomato' },
-                }}
-            />
-            <Stack.Screen
-                name="TweetDetails"
-                component={TweetDetails}
-                options={({ route }) => ({title: route.params.id })}
-            />
-        </Stack.Navigator>
-    );
-
-    const Tab = createBottomTabNavigator();
-    const TabNavigator = () => (
-        <Tab.Navigator
-            tabBarOptions={{
-                activeBackgroundColor: "tomato",
-                inctiveBackgroundColor: "#eee",
-                activeTintColor: "white",
-                inctiveTintColor: "black",
-            }}
-        >
-            <Tab.Screen
-                name="Feed"
-                component={Tweets}
-                options={{
-                    tabBarIcon: ({ size, color }) => <MaterialCommunityIcons name='home' size={size} color={color} />
-                }}
-            />
-        </Tab.Navigator>
-    );
-
   const [user, setUser] = useState();
+  const restoreToken = async () => {
+      const token = await authStorage.getToken()
+      if(!token) return;
+      setUser(jwtDecode(token));
+  };
+
+  useEffect(() =>{
+      restoreToken()
+  },[]);
 
   return (
         <AuthContext.Provider value={{ user, setUser }} >

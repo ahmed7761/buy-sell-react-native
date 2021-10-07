@@ -34,7 +34,8 @@
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.4.0",
     "react-native-web": "~0.13.12",
-    "yup": "^0.28.5"
+    "yup": "^0.28.5",
+    "expo-secure-store": "~10.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
