@@ -27,6 +27,7 @@ import AuthNavigator from "./app/navigation/AuthNavigator";
 import navigationTheme from "./app/navigation/navigationTheme";
 import AppNavigator from "./app/navigation/AppNavigator";
 import OfflineNotice from "./app/components/OfflineNotice";
+import AuthContext from "./app/auth/context";
 
 export default function App() {
 
@@ -105,13 +106,15 @@ export default function App() {
         </Tab.Navigator>
     );
 
+  const [user, setUser] = useState();
+
   return (
-        <>
+        <AuthContext.Provider value={{ user, setUser }} >
             <NavigationContainer theme={navigationTheme} >
-                <AuthNavigator />
+                { user ?  <AppNavigator /> : <AuthNavigator/>}
             </NavigationContainer>
             <OfflineNotice />
-        </>
+        </AuthContext.Provider>
       // <Screen>
       //     <ImageInputList
       //         imageUris={imageUris}
