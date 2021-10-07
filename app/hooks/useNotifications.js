@@ -13,7 +13,6 @@ export default (notificationListener) => {
     const registerForPushNotifications =  async () => {
         try {
             const token = await Notifications.getExpoPushTokenAsync();
-            console.log(token['data']);
             expoPushTokensApi.register(token['data']);
         } catch (e) {
             console.log("error", e)

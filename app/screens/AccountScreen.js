@@ -8,13 +8,13 @@ import ListItemSeparator from "../components/ListItemSeparator";
 import useAuth from "../auth/useAuth";
 
 const menuItems = [
-    {
-        title: "My Listings",
-        icon: {
-            name: "format-list-bulleted",
-            backgroundColor: colors.primary
-        }
-    },
+    // {
+    //     title: "My Listings",
+    //     icon: {
+    //         name: "format-list-bulleted",
+    //         backgroundColor: colors.primary
+    //     }
+    // },
     {
         title: "My Messages",
         icon: {
@@ -35,7 +35,6 @@ const AccountScreen = ({ navigation }) => {
                     title={user.name}
                     subTitle={user.email}
                     image={require('../assets/mosh.jpg')}
-                    onPress={() => alert('message selected', item) }
                 />
             </View>
             <View style={styles.container}>

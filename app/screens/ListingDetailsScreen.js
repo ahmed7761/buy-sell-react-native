@@ -1,15 +1,19 @@
 import React from 'react';
-import {View, StyleSheet} from "react-native";
+import {View, StyleSheet, KeyboardAvoidingView} from "react-native";
 import colors from "../config/colors";
 import AppText from "../components/AppText";
 import ListItem from "../components/ListItem";
 import { Image } from 'react-native-expo-image-cache'
+import ContactSellerForm from "../components/ContactSellerForm";
 
 const ListingDetailsScreen = ({ route }) => {
     const listing = route.params;
 
     return (
-        <View>
+        <KeyboardAvoidingView
+            behavior="position"
+            keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 100}
+        >
             <Image style={styles.image}
                    preview={{ uri: listing.images[0].thumbnailUrl}}
                    tint='light'
@@ -24,9 +28,9 @@ const ListingDetailsScreen = ({ route }) => {
                         subTitle='5 listings'
                     />
                 </View>
-
+                <ContactSellerForm listing={listing} />
             </View>
-        </View>
+        </KeyboardAvoidingView>
     );
 };
 
