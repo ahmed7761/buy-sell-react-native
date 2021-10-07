@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Screen from "../components/Screen";
 import ListItem from "../components/ListItem";
 import Icon from "../components/Icon";
 import {View, StyleSheet, FlatList} from "react-native";
 import colors from "../config/colors";
 import ListItemSeparator from "../components/ListItemSeparator";
+import AuthContext from "../auth/context";
 
 const menuItems = [
     {
@@ -25,12 +26,13 @@ const menuItems = [
 ]
 
 const AccountScreen = ({ navigation }) => {
+    const { user } = useContext(AuthContext);
     return (
         <Screen style={styles.screen}>
             <View style={styles.container}>
                 <ListItem
-                    title="Sharif Ahmed"
-                    subTitle="sharif@namespaceit.com"
+                    title={user.name}
+                    subTitle={user.email}
                     image={require('../assets/mosh.jpg')}
                     onPress={() => alert('message selected', item) }
                 />
