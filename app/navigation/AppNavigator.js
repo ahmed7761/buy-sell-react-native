@@ -8,6 +8,7 @@ import AccountNavigator from "./AccountNavigator";
 import NewListingButton from "./NewListingButton";
 import routes from "./routes";
 import * as Notifications from 'expo-notifications';
+import expoPushTokensApi from '../api/expoPushTokens';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,7 +21,8 @@ const AppNavigator = () => {
     const registerForPushNotifications =  async () => {
         try {
             const token = await Notifications.getExpoPushTokenAsync();
-            console.log(token);
+            console.log(token['data']);
+            expoPushTokensApi.register(token['data']);
         } catch (e) {
             console.log("error", e)
         }
