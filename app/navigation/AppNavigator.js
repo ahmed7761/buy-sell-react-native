@@ -9,6 +9,7 @@ import NewListingButton from "./NewListingButton";
 import routes from "./routes";
 import * as Notifications from 'expo-notifications';
 import expoPushTokensApi from '../api/expoPushTokens';
+import navigation from './rootNavigation'
 
 const Tab = createBottomTabNavigator();
 
@@ -16,6 +17,10 @@ const AppNavigator = () => {
 
     useEffect(() => {
         registerForPushNotifications();
+
+        Notifications.addPushTokenListener((notification) => {
+            navigation.navigate('Account')
+        })
     },[]);
 
     const registerForPushNotifications =  async () => {
